@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <table>
+            <thead>
+                <td>Edit</td>
+                <td>Interview ID</td>
+                <td>Start Time</td>
+                <td>End Time</td>
+                <td>Interviewer ID</td>
+                <td>Emails</td>
+            </thead>
+            {% for row in rows %}
+                <tr>
+                    <td><a href = "/edit/{{row['interview_id']}}">Edit</a></td>
+                    <td>{{row["interview_id"]}}</td>
+                    <td>{{row["start_time"]}}</td>
+                    <td>{{row["end_time"]}}</td>
+                    <td>{{row["interviewer_id"]}}</td>
+                    <td>{{row["email"]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <h4><a href="/">Go Back</a></h4>
+    </body>
+</html>

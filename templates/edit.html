@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        {% if msg != "" %}
+            {{msg}}
+        {% endif %}
+
+        <form action="{{url_for('editForm')}}" method="POST">
+            <h3>Edit Interview Information</h3>
+            
+            Interview ID
+            <select name = "interview_id">
+                <option value={{rows['interview_id']}} selected>{{rows['interview_id']}}</option>
+            </select><br>
+
+            Start Time
+            <input type="text" name="start_time" value = {{rows['start_time']}} required/><br>
+
+            End Time
+            <input type="text" name="end_time" value = {{rows['end_time']}} required/><br>
+
+            Interviewer ID
+            <select name = "interviewer_id" required>
+                {% for interviewer in user_id%}
+                    {% if interviewer == rows['interviewer_id'] %}
+                        <option value={{interviewer}} selected>{{interviewer}}</option>
+                    {% else %}
+                        <option value={{interviewer}}>{{interviewer}}</option>
+                    {% endif %}
+                {% endfor %}                
+            </select><br>
+
+            Candidate ID
+            <select name = "candidate_id" multiple required>
+                {% for candidate_id, sel in hmap.items()%}
+                    {% if sel == 1 %}
+                        <option value={{candidate_id}} selected>{{candidate_id}}</option>
+                    {% else %}
+                        <option value={{candidate_id}}>{{candidate_id}}</option>
+                    {% endif %}
+                {% endfor %}                
+            </select><br>
+
+            <input type="submit" value="Update">
+        </form>
+        <h4><a href="/">Go Home Page</a></h4>
+    </body>
+</html>

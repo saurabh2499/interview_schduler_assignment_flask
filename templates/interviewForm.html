@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        {% if msg != "" %}
+            {{msg}}
+        {% endif %}
+
+        <form action="{{url_for('submitForm')}}" method="POST">
+            <h3>Interview Information</h3>
+            
+            Interviewer ID
+            <select name = "interviewer_id" required>
+                {% for user in user_id%}
+                    <option value={{user}}>{{user}}</option>
+                {% endfor %}                
+            </select><br>
+
+            Start Time
+            <input type="text" name="start_time" required/><br>
+
+            End Time
+            <input type="text" name="end_time" required/><br>
+
+            Candidate ID
+            <select name = "candidate_id" multiple required>
+                {% for user in user_id%}
+                    <option value={{user}}>{{user}}</option>
+                {% endfor %}                
+            </select><br>
+
+            <input type="submit" value="Submit">
+        </form>
+        <h4><a href="/">Go Back</a></h4>
+    </body>
+</html>
